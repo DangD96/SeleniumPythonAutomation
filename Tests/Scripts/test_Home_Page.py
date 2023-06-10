@@ -10,6 +10,7 @@ import os
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium import webdriver
 
 # getting the name of the directory where this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
@@ -22,11 +23,15 @@ grandparent = os.path.dirname(parent)
 sys.path.append(grandparent)
 
 # Local app imports
-from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.Pages.HomePage import HomePage
 from Src.Pages.CompanyTabSubMenu import CompanyTabSubMenu
 
-class DemoHomePage(WebDriverSetup):
+class DemoHomePage(unittest.TestCase):
+    # Setup method that runs before every test case
+    def setUp(self):
+        self.driver = webdriver.Chrome() # Create new driver instance every time
+        self.driver.maximize_window()
+
     def test_Home_Page(self):
         driver = self.driver
         driver.get("https://phptravels.com/demo/")
@@ -51,6 +56,10 @@ class DemoHomePage(WebDriverSetup):
         # Verify the URL
         #assert driver.execute_script("return window.location.href;") == "https://phptravels.com/contact-us"
         #time.sleep(1.5)
+    
+    # Tear down method to run after every test case
+    def tearDown(self):
+        self.driver.quit()
 
 # Runs the test case
 if __name__ == '__main__':

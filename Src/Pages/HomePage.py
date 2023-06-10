@@ -7,7 +7,7 @@ class HomePage(object):
         
     def verifyPage(self, driver):
         # Make sure we're on the right page
-        return "Book Your Free Travels" in driver.title
+        return "Book Your Free Demo Now" in driver.title
     
     COMPANY_TAB = (By.CSS_SELECTOR, "div.nav_left li:nth-child(5)")
 
