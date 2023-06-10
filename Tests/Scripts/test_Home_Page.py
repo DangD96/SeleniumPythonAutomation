@@ -12,19 +12,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 
-# getting the name of the directory where this file is present.
+# Getting the name of the directory where this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
 
 # Getting the parent directory name where the current directory is present.
 parent = os.path.dirname(current)
 grandparent = os.path.dirname(parent)
 
-# adding the grandparent directory to the sys.path.
+# Adding the grandparent directory to the sys.path.
 sys.path.append(grandparent)
 
 # Local app imports
 from Src.Pages.HomePage import HomePage
-from Src.Pages.CompanyTabSubMenu import CompanyTabSubMenu
 
 class DemoHomePage(unittest.TestCase):
     # Setup method that runs before every test case
@@ -39,9 +38,13 @@ class DemoHomePage(unittest.TestCase):
 
         # Create an instance of the class so you can make use of the methods in the class
         home = HomePage(driver)
-        home.hoverCompanyTab(driver)
-        #home.clickCompanyTab(driver)
-        #time.sleep(1.5)
+        assert home.verifyPage() is True
+
+        companyTab = home.hoverCompanyTab() # Returns CompanyTabMenu object
+        contactUs = companyTab.clickContactUs() # Returns ContactUsPage object
+        time.sleep(1.5)
+
+        assert contactUs.verifyPage() is True
 
         # If element really isn't there then an error will be thrown (NoSuchElementException)
         #WebDriverWait(driver, 10).until(EC.element_to_be_clickable(CompanyTabSubMenu(driver).contact_us_link), message="Did not find element.")
