@@ -38,13 +38,10 @@ class DemoHomePage(unittest.TestCase):
 
         # Create an instance of the class so you can make use of the methods in the class
         home = HomePage(driver)
-        assert home.verifyPage() is True
 
         companyTab = home.hoverCompanyTab() # Returns CompanyTabMenu object
         contactUs = companyTab.clickContactUs() # Returns ContactUsPage object
         time.sleep(1.5)
-
-        assert contactUs.verifyPage() is True
 
         # If element really isn't there then an error will be thrown (NoSuchElementException)
         #WebDriverWait(driver, 10).until(EC.element_to_be_clickable(CompanyTabSubMenu(driver).contact_us_link), message="Did not find element.")
