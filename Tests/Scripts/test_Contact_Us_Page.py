@@ -18,10 +18,10 @@ grandparent = os.path.dirname(parent)
 # adding the grandparent directory to the sys.path.
 sys.path.append(grandparent)
 
-from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.Pages.ContactUsPage import ContactUsPage
+from Src.WebDriverSetup import WebDriverSetupChome
 
-class DemoContactPage(WebDriverSetup):
+class DemoContactPage(WebDriverSetupChome):
     def test_contact_page(self):
         driver = self.driver
         driver.get("https://phptravels.com/contact-us/")

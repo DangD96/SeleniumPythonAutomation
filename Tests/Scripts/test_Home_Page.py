@@ -25,13 +25,9 @@ sys.path.append(grandparent)
 # Local app imports
 from Src.Pages.HomePage import HomePage
 from Src.Pages.NavigationToolbar import NavigationToolbar
+from Src.WebDriverSetup import WebDriverSetupChome
 
-class DemoHomePage(unittest.TestCase):
-    # Setup method that runs before every test case
-    def setUp(self):
-        self.driver = webdriver.Chrome() # Create new driver instance every time
-        self.driver.maximize_window()
-
+class DemoHomePage(WebDriverSetupChome):
     def test_Home_Page(self):
         driver = self.driver
         driver.get("https://phptravels.com/demo/")
@@ -56,10 +52,6 @@ class DemoHomePage(unittest.TestCase):
         # Verify the URL
         #assert driver.execute_script("return window.location.href;") == "https://phptravels.com/contact-us"
         #time.sleep(1.5)
-    
-    # Tear down method to run after every test case
-    def tearDown(self):
-        self.driver.quit()
 
 # Runs the test case
 if __name__ == '__main__':
