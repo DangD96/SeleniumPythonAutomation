@@ -24,6 +24,7 @@ sys.path.append(grandparent)
 
 # Local app imports
 from Src.Pages.HomePage import HomePage
+from Src.Pages.NavigationToolbar import NavigationToolbar
 
 class DemoHomePage(unittest.TestCase):
     # Setup method that runs before every test case
@@ -36,11 +37,10 @@ class DemoHomePage(unittest.TestCase):
         driver.get("https://phptravels.com/demo/")
         time.sleep(3)
 
-        # Create an instance of the class so you can make use of the methods in the class
         home = HomePage(driver)
-
-        companyTab = home.hoverCompanyTab() # Returns CompanyTabMenu object
-        contactUs = companyTab.clickContactUs() # Returns ContactUsPage object
+        navBar = NavigationToolbar(driver)
+        navBar.hoverCompanyTab()
+        contactUs = navBar.clickContactUs() # Returns ContactUsPage object
         time.sleep(1.5)
 
         # If element really isn't there then an error will be thrown (NoSuchElementException)
