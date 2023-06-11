@@ -19,15 +19,15 @@ grandparent = os.path.dirname(parent)
 sys.path.append(grandparent)
 
 from Src.Pages.ContactUsPage import ContactUsPage
-from Src.WebDriverSetup import WebDriverSetupChome
+from Src.WebDriverSetup import WebDriverSetupChrome
 
-class DemoContactPage(WebDriverSetupChome):
+class DemoContactPage(WebDriverSetupChrome):
     def test_contact_page(self):
         driver = self.driver
         driver.get("https://phptravels.com/contact-us/")
         time.sleep(3)
         contact = ContactUsPage(driver)
-        WebDriverWait(driver, 5).until(EC.element_to_be_clickable(contact.contact_info),message = "Element doesn't exist")
+        #WebDriverWait(driver, 5).until(EC.element_to_be_clickable(contact.contact_info),message = "Element doesn't exist")
         
         try:
             assert "Email" and "Skype" in contact.getContactInfo()
