@@ -1,6 +1,9 @@
 from selenium.webdriver.common.by import By
-from .ContactUsPage import ContactUsPage
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from .ContactUsPage import ContactUsPage
 
 class NavigationToolbar(object):
     def __init__(self, driver):
@@ -12,6 +15,7 @@ class NavigationToolbar(object):
 
     # Page methods/services
     def hoverCompanyTab(self):
+            WebDriverWait(self.driver, 10).until(lambda x: x.find_element(*self.COMPANY_TAB), message="Could not find element.") # Wait until the function returns something that evals to True
             actions = ActionChains(self.driver)
             actions.move_to_element(self.driver.find_element(*self.COMPANY_TAB)) # unpack the COMPANY_TAB tuple into find_element's two parameters
             actions.perform()

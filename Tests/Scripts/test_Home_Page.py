@@ -6,11 +6,9 @@ import time
 import sys
 import os
 
-# Third party imports
+# Third party imports here
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium import webdriver
 
 # Getting the name of the directory where this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
