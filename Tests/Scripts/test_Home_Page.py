@@ -25,9 +25,9 @@ sys.path.append(grandparent)
 # Local app imports
 from Src.Pages.HomePage import HomePage
 from Src.Pages.NavigationToolbar import NavigationToolbar
-from Src.WebDriverSetup import WebDriverSetupChrome
+from Src.WebDriverSetup import WebDriverSetup
 
-class DemoHomePage(WebDriverSetupChrome):
+class DemoHomePage(WebDriverSetup):
     def test_Home_Page(self):
         driver = self.driver
         driver.get("https://phptravels.com/demo/")
