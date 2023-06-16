@@ -5,8 +5,8 @@ class HomePage(object):
     def __init__(self, driver):
         self.driver = driver
         # Make sure we're on the right page first of all
-        if "Book Your Free Demo Now" and "Phptravels" not in driver.title: 
-            raise Exception(f'This is not the home page. Current page is {driver.title}')
+        if "Book Your Free Demo Now" and "Phptravels" not in self.driver.title: 
+            raise Exception(f'This is not the home page. Current page is {self.driver.title}')
         
     # Locators
     DEMO_FORM = (By.CSS_SELECTOR, "div.demo_form")

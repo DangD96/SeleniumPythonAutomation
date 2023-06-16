@@ -6,7 +6,7 @@ class ContactUsPage(object):
     def __init__(self, driver):
         self.driver = driver
         if "Contact Us" not in self.driver.title:
-            raise Exception(f'This is not the contact us page. Current page is {driver.title}')
+            raise Exception(f'This is not the contact us page. Current page is {self.driver.title}')
 
     # Locators
     CONTACT_INFO = (By.CSS_SELECTOR, "div.panel-body")
