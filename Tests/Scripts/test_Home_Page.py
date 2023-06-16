@@ -37,19 +37,12 @@ class DemoHomePage(WebDriverSetup):
         contactUs = navBar.clickContactUs() # Returns ContactUsPage object
         time.sleep(1.5)
 
-        # If element really isn't there then an error will be thrown (NoSuchElementException)
-        #WebDriverWait(driver, 10).until(EC.element_to_be_clickable(CompanyTabSubMenu(driver).contact_us_link), message="Did not find element.")
-
         # Seems to need this format for arguments[0]
         #assert driver.execute_script("return arguments[0].innerText.includes('Contact Us');", CompanyTabSubMenu(driver).contact_us_link) == True
 
-        # Click contact us
-        #CompanyTabSubMenu(driver).clickContactUs()
-        #time.sleep(1.5)
-
         # Verify the URL
-        #assert driver.execute_script("return window.location.href;") == "https://phptravels.com/contact-us"
-        #time.sleep(1.5)
+        assert driver.execute_script("return window.location.href;") == "https://phptravels.com/contact-us"
+        time.sleep(1.5)
 
 # Runs the test case
 if __name__ == '__main__':

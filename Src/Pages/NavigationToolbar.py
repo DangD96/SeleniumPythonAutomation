@@ -27,6 +27,6 @@ class NavigationToolbar(object):
     def clickContactUs(self):
         WebDriverWait(self.driver, 10).until(lambda x: x.find_element(*self.COMPANY_TAB_CONTACT_US), message="Could not find element.")
         contactUsLink = self.driver.find_element(*self.COMPANY_TAB_CONTACT_US)
-        self.driver.find_element(contactUsLink).click()
+        contactUsLink.click()
         return ContactUsPage(self.driver)                # Return ContactUsPage object because this action takes us to that "page" now
         
