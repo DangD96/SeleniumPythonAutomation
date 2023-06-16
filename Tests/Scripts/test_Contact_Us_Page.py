@@ -5,8 +5,7 @@ import time
 import sys
 import os
 
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 # getting the name of the directory where the this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
@@ -19,20 +18,16 @@ grandparent = os.path.dirname(parent)
 sys.path.append(grandparent)
 
 from Src.Pages.ContactUsPage import ContactUsPage
-from Src.WebDriverSetup import WebDriverSetupChrome
+from Src.WebDriverSetup import WebDriverSetup
 
-class DemoContactPage(WebDriverSetupChrome):
+class DemoContactPage(WebDriverSetup):
     def test_contact_page(self):
         driver = self.driver
         driver.get("https://phptravels.com/contact-us/")
         time.sleep(3)
         contact = ContactUsPage(driver)
-        #WebDriverWait(driver, 5).until(EC.element_to_be_clickable(contact.contact_info),message = "Element doesn't exist")
-        
-        try:
-            assert "Email" and "Skype" in contact.getContactInfo()
-        except AssertionError:
-            print("Assertion failed.")
+        assert "Email" and "Phone" in contact.getContactInfo()
+
 
 if __name__ == '__main__':
     unittest.main()
