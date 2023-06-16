@@ -5,8 +5,6 @@ import time
 import sys
 import os
 
-
-
 # getting the name of the directory where the this file is present.
 current = os.path.dirname(os.path.realpath(__file__))
 
