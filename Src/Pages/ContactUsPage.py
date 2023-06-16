@@ -13,5 +13,5 @@ class ContactUsPage(object):
 
     # Methods for this page
     def getContactInfo(self):
-        WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.CONTACT_INFO), message = "Element doesn't exist")
+        WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.CONTACT_INFO), message = "Element doesn't exist.")
         return self.driver.find_element(*self.CONTACT_INFO).text

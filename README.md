@@ -1,2 +1,2 @@
 # SeleniumPythonAutomation
-Creating another selenium project based on page object model.
+Using selenium to automate the testing of a dummy website. Incorporating Page Object Model design philosophy into file architecture.
