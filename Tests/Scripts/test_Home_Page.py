@@ -52,7 +52,6 @@ class DemoHomePage(WebDriverSetup):
         time.sleep(3)
         home = HomePage(driver)
         home.demoFormInputFirstNameValid("Bob")
-
         home.demoFormInputLastNameValid("Bacon")
         home.demoFormInputBusinessNameValid("Test Company inc")
         home.demoFormInputEmailValid("Bob@fakeemail.com")
