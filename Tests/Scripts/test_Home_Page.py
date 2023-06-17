@@ -22,6 +22,7 @@ sys.path.append(grandparent)
 
 # Local app imports
 from Src.Pages.HomePage import HomePage
+from Src.Pages.ContactUsPage import ContactUsPage
 from Src.Pages.NavigationToolbar import NavigationToolbar
 from Src.WebDriverSetup import WebDriverSetup
 
@@ -34,8 +35,9 @@ class DemoHomePage(WebDriverSetup):
         home = HomePage(driver)
         navBar = NavigationToolbar(driver)
         navBar.hoverCompanyTab()
-        contactUs = navBar.clickContactUs() # Returns ContactUsPage object
+        navBar.clickContactUs()
         time.sleep(1.5)
+        contactUs = ContactUsPage(driver)
 
         # Seems to need this format for arguments[0]
         #assert driver.execute_script("return arguments[0].innerText.includes('Contact Us');", CompanyTabSubMenu(driver).contact_us_link) == True
@@ -43,6 +45,17 @@ class DemoHomePage(WebDriverSetup):
         # Verify the URL
         assert driver.execute_script("return window.location.href;") == "https://phptravels.com/contact-us"
         time.sleep(1.5)
+
+    def test_Input_Form(self):
+        driver = self.driver
+        driver.get("https://phptravels.com/demo/")
+        time.sleep(3)
+        home = HomePage(driver)
+        home.demoFormInputFirstNameValid("Bob")
+
+        home.demoFormInputLastNameValid("Bacon")
+        home.demoFormInputBusinessNameValid("Test Company inc")
+        home.demoFormInputEmailValid("Bob@fakeemail.com")
 
 # Runs the test case
 if __name__ == '__main__':

@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -22,25 +24,24 @@ class HomePage(BasePage):
     def demoFormInputFirstNameValid(self, firstname):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM_FIRST_NAME), message = "Element doesn't exist.")
         self.driver.find_element(*self.DEMO_FORM_FIRST_NAME).send_keys(firstname)
-        return HomePage(self.driver) # Return HomePage object since we don't move to a different "page" after this method
+        time.sleep(3)
     
     def demoFormInputLastNameValid(self, lastname):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM_LAST_NAME), message = "Element doesn't exist.")
         self.driver.find_element(*self.DEMO_FORM_LAST_NAME).send_keys(lastname)
-        return HomePage(self.driver)
+        time.sleep(3)
     
     def demoFormInputBusinessNameValid(self, businessname):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM_BUSINESS_NAME), message = "Element doesn't exist.")
         self.driver.find_element(*self.DEMO_FORM_BUSINESS_NAME).send_keys(businessname)
-        return HomePage(self.driver)
+        time.sleep(3)
     
     def demoFormInputEmailValid(self, email):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM_EMAIL), message = "Element doesn't exist.")
         self.driver.find_element(*self.DEMO_FORM_EMAIL).send_keys(email)
-        return HomePage(self.driver)
+        time.sleep(3)
 
     def demoFormSubmitValid(self):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM), message = "Element doesn't exist.")
         self.driver.find_element(*self.DEMO_FORM_SUBMIT).click()
-        return HomePage(self)
     

@@ -3,7 +3,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from .ContactUsPage import ContactUsPage
 from .BasePage import BasePage
 
 class NavigationToolbar(BasePage):
@@ -23,11 +22,9 @@ class NavigationToolbar(BasePage):
         actions = ActionChains(self.driver)
         actions.move_to_element(companyTab) 
         actions.perform()
-        return NavigationToolbar(self.driver)
 
     def clickContactUs(self):
         WebDriverWait(self.driver, 10).until(lambda x: x.find_element(*self.COMPANY_TAB_CONTACT_US), message="Could not find element.")
         contactUsLink = self.driver.find_element(*self.COMPANY_TAB_CONTACT_US)
         contactUsLink.click()
-        return ContactUsPage(self.driver)                # Return ContactUsPage object because this action takes us to that "page" now
         
