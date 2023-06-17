@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-class HomePage(object):
+from .BasePage import BasePage
+
+class HomePage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         # Make sure we're on the right page first of all
         if "Book Your Free Demo Now" and "Phptravels" not in self.driver.title: 
             raise Exception(f'This is not the home page. Current page is {self.driver.title}')

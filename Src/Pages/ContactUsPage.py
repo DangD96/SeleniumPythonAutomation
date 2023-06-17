@@ -2,9 +2,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class ContactUsPage(object):
+from .BasePage import BasePage
+
+class ContactUsPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         if "Contact Us" not in self.driver.title:
             raise Exception(f'This is not the contact us page. Current page is {self.driver.title}')
 

@@ -4,10 +4,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from .ContactUsPage import ContactUsPage
+from .BasePage import BasePage
 
-class NavigationToolbar(object):
+class NavigationToolbar(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
 
     # Locators
     COMPANY_TAB = (By.CSS_SELECTOR, "div.nav_left li:nth-child(5)")
