@@ -23,7 +23,8 @@ class HomePage(BasePage):
     # Methods/services for this page
     def demoFormInputFirstNameValid(self, firstname):
         WebDriverWait(self.driver, 10).until(lambda x : x.find_element(*self.DEMO_FORM_FIRST_NAME), message = "Element doesn't exist.")
-        self.driver.find_element(*self.DEMO_FORM_FIRST_NAME).send_keys(firstname)
+        inputField = self.driver.find_element(*self.DEMO_FORM_FIRST_NAME)
+        inputField.send_keys(firstname)
         time.sleep(3)
     
     def demoFormInputLastNameValid(self, lastname):
