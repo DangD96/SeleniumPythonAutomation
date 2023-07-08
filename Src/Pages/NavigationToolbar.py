@@ -10,7 +10,7 @@ class NavigationToolbar(BasePage):
         super().__init__(driver)
 
     # Locators
-    COMPANY_TAB = (By.CSS_SELECTOR, "div.nav_left li:nth-child(5)")
+    COMPANY_TAB = (By.CSS_SELECTOR, "div.nav_left li:nth-child(6)")
     COMPANY_TAB_CONTACT_US = (By.CSS_SELECTOR, "[href='https://phptravels.com/contact-us']")
 
     # Page methods/services
